@@ -13,8 +13,23 @@ test:
 run:
 	docker-compose up -d
 
-in:
-	docker exec -it $(shell docker-compose ps | grep _php_ | cut -d" " -f 1) /bin/bash
+in-api:
+	docker-compose exec api /bin/bash
+
+in-nginx-drupal:
+	docker-compose exec nginx_drupal /bin/bash
+
+in-drupal:
+	docker-compose exec drupal /bin/bash
+
+in-nginx-php:
+	docker-compose exec nginx_php /bin/bash
+
+in-php:
+	docker-compose exec php /bin/bash
+
+in-db:
+	docker-compose exec mariadb /bin/bash
 
 stop:
 	docker-compose stop
